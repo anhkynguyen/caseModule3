@@ -5,7 +5,7 @@ class ProductService {
   findAll() {
     let connect = connection.getConnection();
     return new Promise((resolve, rejects) => {
-      connect.query("SELECT * FROM product", (err, products) => {
+      connect.query("SELECT * from product join category on product.idCategory = category.idCategory ", (err, products) => {
         if (err) {
           rejects(err);
         } else {
@@ -18,7 +18,7 @@ class ProductService {
     let connect = connection.getConnection();
     return new Promise((resolve, rejects) => {
       connect.query(
-        `insert into product(price,name,description) values (${product.price},'${product.name}','${product.description}')`,
+        `insert into product(price,name,description,image,idCategory) values (${product.price},'${product.name}','${product.description}','${product.image}','${product.idCategory}')`,
         (err, product) => {
           if (err) {
             console.log(err);
@@ -59,7 +59,7 @@ class ProductService {
     let connect = connection.getConnection();
     return new Promise((resolve, rejects) => {
       connect.query(
-        `UPDATE product SET name = '${product.name}',price = ${product.price}, description = '${product.description}' WHERE id = ${id}`,
+        `UPDATE product SET name = '${product.name}',price = ${product.price}, description = '${product.description}',image= '${product.image}' WHERE id = ${id}`,
         (err, product) => {
           if (err) {
             rejects(err);
@@ -70,19 +70,19 @@ class ProductService {
       );
     });
   }
-//   searchProduct(search) {
-//     let connect = connection.getConnection();
-//     let sql = `select * from user s join grade g on s.idGrade = g.idGrade  WHERE name LIKE '%${search}%'`
-//     return new Promise((resolve, reject) => {
-//         connect.query(sql,(err, students) => {
-//             if (err) {
-//                 reject(err);
-//             } else {
-//                 resolve(students);
-//             }
-//         })
-//     })
-// }
+  search(search) {
+    let connect = connection.getConnection();
+    let sql = `select * from product WHERE name LIKE '%${search}%'`
+    return new Promise((resolve, reject) => {
+        connect.query(sql,(err, products) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(products);
+            }
+        })
+    })
+}
 }
 const productService = new ProductService();
 module.exports = productService;

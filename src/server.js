@@ -13,7 +13,7 @@ const typeFile = {
   ttf: "font/tff",
   woff: "font/woff",
   woff2: "font/woff",
-  eot: "application/vnd.ms-fontobject",
+  eot: "application/vnd.ms-fontObject",
 };
 const server = http.createServer((req, res) => {
   let pathName = url.parse(req.url, true).pathname;

@@ -7,7 +7,9 @@ const router = {
   'edit': homeHandlerRouter.editProduct,
   'login': userHandlerRouter.showFormLogin ,
   'register':userHandlerRouter.userRegister,
-  '':homeHandlerRouter.showBeginHtml
+  '':homeHandlerRouter.showBeginHtml,
+  'registerSuccess': userHandlerRouter.registerSuccess,
+  'user':userHandlerRouter.showHomeUser
 
 };
 module.exports = router;

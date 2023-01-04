@@ -4,14 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit</title>
 </head>
 <body>
- <form action="/edit/{id}" method="post">
+ <form action="/edit/{id}" method="post" style="margin-left: 650px" >
+    <p>Name</p>
     <input type="text" name="name" value="{name}">
+    <p>Price</p>
     <input type="text" name="price" value="{price}">
-    <input type="text" name="description" value="{description}">
+   <p>Description</p>
+    <input type="text" name="description" value="{description}"> 
+    <p>Image</p>
+    <input type="file" name="image" accept=".jpg,.png">
+    <br>
+    <br>
+    <br>
     <button type="submit">Edit</button>
  </form>
 </body>
 </html>
+
